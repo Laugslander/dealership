@@ -1,0 +1,18 @@
+# Java
+build
+*.jar
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
+
+# npm
+node_modules
+
+# Serverless
+.serverless
+
+# IntelliJ IDEA
+out
+.idea
+*.iml

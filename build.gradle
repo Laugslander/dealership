@@ -1,0 +1,40 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile(
+            'com.amazonaws:aws-lambda-java-core:1.2.0',
+            'com.amazonaws:aws-lambda-java-events:2.2.5',
+            'com.amazonaws:aws-java-sdk-dynamodb:1.11.513',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.8',
+    )
+
+    compileOnly(
+            'org.projectlombok:lombok:1.18.6'
+    )
+
+    testCompileOnly(
+            'org.projectlombok:lombok:1.18.6'
+    )
+}
+
+task buildZip(type: Zip) {
+    baseName = "dealership"
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
