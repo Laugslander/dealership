@@ -6,10 +6,10 @@ import nl.robinlaugs.dealership.serverless.handler.aws.AWSHandler;
 import nl.robinlaugs.dealership.service.CarService;
 import nl.robinlaugs.dealership.service.Service;
 
-@Getter
 abstract class AWSCarHandler extends AWSHandler {
 
-    private Service<Car> service;
+    @Getter
+    private final Service<Car> service;
 
     public AWSCarHandler(Service<Car> service) {
         this.service = service;

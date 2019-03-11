@@ -15,7 +15,7 @@ import static java.lang.String.format;
 public abstract class AWSHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     @Getter
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     protected APIGatewayProxyResponseEvent createApiGatewayException(String message, Exception exception) {
         Map<String, String> body = new HashMap<String, String>() {{
@@ -27,6 +27,5 @@ public abstract class AWSHandler implements RequestHandler<APIGatewayProxyReques
                 .body(body.toString())
                 .build();
     }
-
 
 }
