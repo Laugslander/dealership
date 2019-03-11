@@ -24,7 +24,7 @@ public class DynamoDBCarDao extends DynamoDBDao<Car, DynamoDBCar> {
 
         // TODO update car
 
-        return null;
+        return car;
     }
 
 }

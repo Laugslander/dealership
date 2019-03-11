@@ -9,6 +9,14 @@ import nl.robinlaugs.dealership.service.Service;
 @Getter
 abstract class AWSCarHandler extends AWSHandler {
 
-    private Service<Car> service = new CarService();
+    private Service<Car> service;
+
+    public AWSCarHandler(Service<Car> service) {
+        this.service = service;
+    }
+
+    public AWSCarHandler() {
+        service = new CarService();
+    }
 
 }

@@ -8,8 +8,6 @@ import nl.robinlaugs.dealership.util.APIGatewayProxyResponseEventBuilder;
 
 import java.util.Collection;
 
-import static java.lang.String.format;
-
 public class AWSCarListHandler extends AWSCarHandler {
 
     @Override
@@ -23,10 +21,8 @@ public class AWSCarListHandler extends AWSCarHandler {
                     .build();
 
         } catch (Exception e) {
-            return APIGatewayProxyResponseEventBuilder.builder()
-                    .statusCode(500)
-                    .body(format("An error occurred while retrieving all cars: %s", e))
-                    .build();
+            return super.createApiGatewayException("An error occurred while retrieving all cars", e);
+
         }
     }
 

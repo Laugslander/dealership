@@ -39,8 +39,8 @@ public class CarService implements Service<Car> {
     }
 
     @Override
-    public boolean delete(String id) {
-        return carDao.delete(id);
+    public void delete(String id) {
+        carDao.delete(id);
     }
 
 }

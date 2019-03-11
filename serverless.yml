@@ -5,6 +5,8 @@ provider:
   runtime: java8
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'eu-west-1'}
+  memorySize: 512
+  timeout: 10
   environment:
     REGION: ${self:provider.region}
     TABLE_CARS: cars-${self:provider.stage}
@@ -53,7 +55,7 @@ functions:
           method: patch
 
   deleteCar:
-    handler: ${self:custom.handlers}car.AWSCarDeleteHandler
+    handler: ${self:custom.handlers}.car.AWSCarDeleteHandler
     events:
       - http:
           path: /cars/{id}

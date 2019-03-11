@@ -12,6 +12,6 @@ public interface Service<T> {
 
     T update(T object);
 
-    boolean delete(String id);
+    void delete(String id);
 
 }

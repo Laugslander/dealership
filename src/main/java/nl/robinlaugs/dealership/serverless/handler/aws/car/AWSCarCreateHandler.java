@@ -6,8 +6,6 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import nl.robinlaugs.dealership.domain.Car;
 import nl.robinlaugs.dealership.util.APIGatewayProxyResponseEventBuilder;
 
-import static java.lang.String.format;
-
 public class AWSCarCreateHandler extends AWSCarHandler {
 
     @Override
@@ -24,10 +22,7 @@ public class AWSCarCreateHandler extends AWSCarHandler {
                     .build();
 
         } catch (Exception e) {
-            return APIGatewayProxyResponseEventBuilder.builder()
-                    .statusCode(500)
-                    .body(format("An error occurred while creating a car: %s", e))
-                    .build();
+            return super.createApiGatewayException("An error occurred while creating a car", e);
         }
     }
 

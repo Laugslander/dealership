@@ -11,18 +11,12 @@ public class AWSCarDeleteHandler extends AWSCarHandler {
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent input, Context context) {
         String id = input.getPathParameters().get("id");
 
-        boolean success = super.getService().delete(id);
-
-        if (success) {
-            return APIGatewayProxyResponseEventBuilder.builder()
-                    .statusCode(200)
-                    .build();
-        }
+        super.getService().delete(id);
 
         return APIGatewayProxyResponseEventBuilder.builder()
-                .statusCode(500)
-                .body("An error occurred while deleting a car")
+                .statusCode(200)
                 .build();
+
     }
 
 }
